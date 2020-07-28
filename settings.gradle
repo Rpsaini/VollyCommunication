@@ -1,0 +1,2 @@
+include ':app', ':vollycommunicationlib'
+rootProject.name='VollyCommunication'
