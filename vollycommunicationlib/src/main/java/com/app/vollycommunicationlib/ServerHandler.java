@@ -19,9 +19,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +28,9 @@ public class ServerHandler
     private Dialog progressdlg;
     private UtilClass utilClass;
     private Context ct1;
+    private int loaderLayout;
+
+
     public ServerHandler()
     {
     }
@@ -54,10 +54,12 @@ public class ServerHandler
         return false;
     }
 
-    public void sendToServer(final Context ct, String url, final Map<String, String> data, final int showloader,final JSONObject headerData,final int requestTimeOutmilisecound ,final CallBack cb)
+    public void sendToServer(final Context ct, String url, final Map<String, String> data, final int showloader,final JSONObject headerData,final int requestTimeOutmilisecound,int loaderLayout,final CallBack cb)
     {
         ct1=ct;
-        if(progressdlg != null && progressdlg.isShowing()) {
+        this.loaderLayout=loaderLayout;
+        if(progressdlg != null && progressdlg.isShowing())
+        {
             progressdlg.dismiss();
         }
         if (CheckInternetState(ct, showloader)) {
@@ -171,17 +173,16 @@ private void showProgressDialog()
   {
     progressdlg = new Dialog(ct1);
     progressdlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
-    progressdlg.setContentView(R.layout.loaderlayout);
+    progressdlg.setContentView(loaderLayout);
     WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
     Window window = progressdlg.getWindow();
     lp.copyFrom(window.getAttributes());
     progressdlg.setCancelable(false);
-
     lp.width = WindowManager.LayoutParams.MATCH_PARENT;
     lp.height = WindowManager.LayoutParams.MATCH_PARENT;
     window.setAttributes(lp);
 
-    progressdlg.getWindow().setBackgroundDrawableResource(R.color.colorBody);
+    progressdlg.getWindow().setBackgroundDrawableResource(R.color.progressbarbackgroundcolor);
     progressdlg.getWindow().setDimAmount(0);
     progressdlg.show();
 
