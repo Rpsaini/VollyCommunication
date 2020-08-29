@@ -54,7 +54,7 @@ public class ServerHandler
         return false;
     }
 
-    public void sendToServer(final Context ct, String url, final Map<String, String> data, final int showloader,final JSONObject headerData,final int requestTimeOutmilisecound,int loaderLayout,final CallBack cb)
+    public void sendToServer(final Context ct, String url, final Map<String, String> data, final int showloader, final JSONObject headerData, final String xapikey, final int requestTimeOutmilisecound, int loaderLayout, final CallBack cb)
     {
         ct1=ct;
         this.loaderLayout=loaderLayout;
@@ -115,6 +115,7 @@ public class ServerHandler
                     {
                         Map<String, String> params=new HashMap<>();
                         params.put("headerData", headerData+"");
+                        params.put("X-API-KEY", xapikey+"");
                         return params;
                     };
                 };
