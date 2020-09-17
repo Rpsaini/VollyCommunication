@@ -55,7 +55,7 @@ public class ServerHandler
         return false;
     }
 
-    public void sendToServer(final Context ct, String url, final Map<String, String> data, final int showloader, final Map<String,String> headerData, final String xapikey, final int requestTimeOutmilisecound, int loaderLayout, final CallBack cb)
+    public void sendToServer(final Context ct, String url, final Map<String, String> data, final int showloader, final Map<String,String> headerData, final int requestTimeOutmilisecound, int loaderLayout, final CallBack cb)
     {
         ct1=ct;
         this.loaderLayout=loaderLayout;
