@@ -17,6 +17,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -54,7 +55,7 @@ public class ServerHandler
         return false;
     }
 
-    public void sendToServer(final Context ct, String url, final Map<String, String> data, final int showloader, final JSONObject headerData, final String xapikey, final int requestTimeOutmilisecound, int loaderLayout, final CallBack cb)
+    public void sendToServer(final Context ct, String url, final Map<String, String> data, final int showloader, final Map<String,String> headerData, final String xapikey, final int requestTimeOutmilisecound, int loaderLayout, final CallBack cb)
     {
         ct1=ct;
         this.loaderLayout=loaderLayout;
@@ -113,10 +114,10 @@ public class ServerHandler
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError
                     {
-                        Map<String, String> params=new HashMap<>();
-                        params.put("headerData", headerData+"");
-                        params.put("X-API-KEY", xapikey+"");
-                        return params;
+//                        Map<String, String> params=new HashMap<>();
+//                        params.put("headerData", headerData+"");
+//                        params.put("X-API-KEY", xapikey+"");
+                        return headerData;
                     };
                 };
 
